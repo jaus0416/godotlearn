@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpmf5q08e6c"]
+
+[ext_resource type="PackedScene" uid="uid://b03hj02fhrhwb" path="res://sprite_2d.tscn" id="1_5x7i0"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" parent="." instance=ExtResource("1_5x7i0")]
+
+[node name="Timer" type="Timer" parent="Sprite2D"]
+autostart = true
+
+[node name="Button" type="Button" parent="."]
+offset_left = 116.0
+offset_top = 461.0
+offset_right = 260.0
+offset_bottom = 535.0
+text = "移动/停止"
+
+[connection signal="pressed" from="Button" to="Sprite2D" method="_on_button_pressed"]
