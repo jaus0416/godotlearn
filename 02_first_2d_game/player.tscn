@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://uqhotxh3ydo4"]
+[gd_scene load_steps=8 format=3 uid="uid://uqhotxh3ydo4"]
 
+[ext_resource type="Script" path="res://02_first_2d_game/player.gd" id="1_35cqy"]
 [ext_resource type="Texture2D" uid="uid://c2o1gvlm63tyg" path="res://assert/02/art/playerGrey_up1.png" id="1_jiqee"]
 [ext_resource type="Texture2D" uid="uid://da63ioc6psyiw" path="res://assert/02/art/playerGrey_up2.png" id="2_ek7u2"]
 [ext_resource type="Texture2D" uid="uid://c30dfqknxv2p1" path="res://assert/02/art/playerGrey_walk1.png" id="3_afmkp"]
@@ -9,24 +10,24 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_jiqee")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_ek7u2")
-}],
-"loop": true,
-"name": &"up",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": ExtResource("3_afmkp")
 }, {
 "duration": 1.0,
 "texture": ExtResource("4_18otj")
 }],
 "loop": true,
-"name": &"walk",
+"name": &"horizontal",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_jiqee")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ek7u2")
+}],
+"loop": true,
+"name": &"vertical",
 "speed": 5.0
 }]
 
@@ -36,13 +37,16 @@ height = 54.0
 
 [node name="Player" type="Area2D"]
 position = Vector2(23, 45)
+script = ExtResource("1_35cqy")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_tuayv")
-animation = &"walk"
+animation = &"vertical"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -6)
 shape = SubResource("CapsuleShape2D_srsyf")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
