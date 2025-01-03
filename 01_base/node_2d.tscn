@@ -1,15 +1,17 @@
 [gd_scene load_steps=2 format=3 uid="uid://cpmf5q08e6c"]
 
-[ext_resource type="PackedScene" uid="uid://b03hj02fhrhwb" path="res://sprite_2d.tscn" id="1_5x7i0"]
+[ext_resource type="PackedScene" uid="uid://b03hj02fhrhwb" path="res://01_base/sprite_2d.tscn" id="1_5x7i0"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Sprite2D" parent="." instance=ExtResource("1_5x7i0")]
+visible = false
 
 [node name="Timer" type="Timer" parent="Sprite2D"]
 autostart = true
 
 [node name="Button" type="Button" parent="."]
+visible = false
 offset_left = 116.0
 offset_top = 461.0
 offset_right = 260.0
