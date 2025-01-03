@@ -2,7 +2,7 @@ extends Node
 
 # 全局变量
 @export var mob_scene: PackedScene
-var score = 0
+var score
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -17,10 +17,18 @@ func _process(delta: float) -> void:
 func game_over():
 	$ScoreTimer.stop()
 	$MobTimer.stop()
+	$HUD.show_game_over()
+	$Music.stop()
+	$DeathSound.play()
 
 func new_game():
+	score = 0
+	$Music.play()
+	get_tree().call_group("mobs", "queue_free")
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
+	$HUD.update_score(score)
+	$HUD.show_message("Get Ready")
 
 # 创建小怪
 func _on_mob_timer_timeout() -> void:
@@ -45,6 +53,7 @@ func _on_mob_timer_timeout() -> void:
 # 计分
 func _on_score_timer_timeout() -> void:
 	score += 1
+	$HUD.update_score(score)
 
 # 开始游戏
 func _on_start_timer_timeout() -> void:
