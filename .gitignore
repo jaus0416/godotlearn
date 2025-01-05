@@ -6,4 +6,4 @@
 .DS_Store
 
 # 不要上传图片等资源
-assert/
+# assert/

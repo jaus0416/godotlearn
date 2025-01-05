@@ -48,7 +48,7 @@ shape = SubResource("BoxShape3D_i5qqg")
 mesh = SubResource("BoxMesh_8g7jg")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 26, -3)
+transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, -9, 24, -3)
 shadow_enabled = true
 shadow_normal_bias = 1.0
 
@@ -85,7 +85,7 @@ mesh = SubResource("CylinderMesh_bhltm")
 curve = SubResource("Curve3D_qxxq5")
 
 [node name="SpawnLocation" type="PathFollow3D" parent="SpawnPath"]
-transform = Transform3D(0.00250621, -1.98278e-06, -0.999996, 0, 1, -1.98278e-06, 0.999996, 4.96927e-09, 0.00250621, -15.1912, 0.012188, -15.308)
+transform = Transform3D(0.00250788, -1.98166e-06, -0.999996, -1.13687e-13, 1, -1.98166e-06, 0.999996, 4.96988e-09, 0.00250788, -15.1912, 0.012188, -15.308)
 
 [node name="MobTimer" type="Timer" parent="."]
 wait_time = 0.5
