@@ -15,6 +15,10 @@ run/main_scene="res://03_first_3d_game/main.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+MusicPlayer="*res://03_first_3d_game/music_player.tscn"
+
 [display]
 
 window/size/viewport_width=720
