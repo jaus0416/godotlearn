@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://78p1crkwfkeh"]
+
+[ext_resource type="Texture2D" uid="uid://dsksduiumhpo0" path="res://assert/02/art/enemyFlyingAlt_1.png" id="1_ktvu0"]
+[ext_resource type="Texture2D" uid="uid://b04kxm6wsprhe" path="res://assert/02/art/enemyFlyingAlt_2.png" id="2_wbpin"]
+[ext_resource type="Script" path="res://04_state_machine/state_machine/state_machine.gd" id="3_klc08"]
+[ext_resource type="Script" path="res://04_state_machine/state_machine/mob_idle_state.gd" id="4_k5fbe"]
+[ext_resource type="Script" path="res://04_state_machine/state_machine/mob_follow.gd" id="5_8dtho"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n0ksv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ktvu0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_wbpin")
+}],
+"loop": true,
+"name": &"mob_walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s1r1m"]
+radius = 32.0
+height = 96.0
+
+[node name="Mob" type="Area2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_n0ksv")
+animation = &"mob_walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(16, 0)
+shape = SubResource("CapsuleShape2D_s1r1m")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_klc08")
+initial_state = NodePath("MobFollow")
+
+[node name="MobIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("4_k5fbe")
+enemy = NodePath("../..")
+
+[node name="MobFollow" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("5_8dtho")
+enemy = NodePath("../..")
