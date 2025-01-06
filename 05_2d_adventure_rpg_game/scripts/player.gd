@@ -3,21 +3,17 @@ class_name Player
 
 var cardinal_deriction : Vector2 = Vector2.DOWN
 var deriction : Vector2 = Vector2.ZERO
-var move_speed : float = 100.0 
-var state : String = "idle"
 
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 @onready var sprite : Sprite2D = $Sprite2D
+@onready var state_machine : PlayerStateMachine = $PlayerStateMachine
+
+func _ready() -> void:
+	state_machine.initialize(self)
 
 func _process(delta: float) -> void:
 	deriction.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	deriction.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
-	
-	if deriction.length() > 0:
-		deriction = deriction.normalized()
-	velocity = deriction * move_speed
-	if set_state() || set_deriction():
-		update_animation()
 
 func _physics_process(delta: float) -> void:
 	move_and_slide()
@@ -39,15 +35,7 @@ func set_deriction() -> bool:
 	sprite.scale.x = -1 if cardinal_deriction == Vector2.LEFT else 1
 	return true
 
-func set_state() -> bool:
-	var new_state : String = "idle" if deriction == Vector2.ZERO else "walk"
-	if new_state == state:
-		return false
-	
-	state = new_state
-	return true
-
-func update_animation() -> void:
+func update_animation(state : String) -> void:
 	var next_animation = state + "_" + anim_derition()
 	print("play animation: %s" % next_animation)
 	animation_player.play(next_animation)

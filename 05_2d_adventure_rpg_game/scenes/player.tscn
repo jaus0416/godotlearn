@@ -1,7 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://cptswd26sm8d8"]
+[gd_scene load_steps=15 format=3 uid="uid://cptswd26sm8d8"]
 
 [ext_resource type="Script" path="res://05_2d_adventure_rpg_game/scripts/player.gd" id="1_53iid"]
 [ext_resource type="Texture2D" uid="uid://xscmg0qb62p2" path="res://assert/05/player/sprites/ExamplePlayerSprite.png" id="1_q7y6m"]
+[ext_resource type="Script" path="res://05_2d_adventure_rpg_game/scripts/player_state_machine.gd" id="3_2bhnj"]
+[ext_resource type="Script" path="res://05_2d_adventure_rpg_game/scripts/player_state_idle.gd" id="4_jw1ef"]
+[ext_resource type="Script" path="res://05_2d_adventure_rpg_game/scripts/player_state_walk.gd" id="5_nrgon"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vpvph"]
 
@@ -150,3 +153,12 @@ hframes = 21
 libraries = {
 "": SubResource("AnimationLibrary_1xlgu")
 }
+
+[node name="PlayerStateMachine" type="Node" parent="."]
+script = ExtResource("3_2bhnj")
+
+[node name="Idle" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("4_jw1ef")
+
+[node name="Walk" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("5_nrgon")
