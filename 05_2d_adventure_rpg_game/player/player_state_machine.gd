@@ -18,6 +18,7 @@ func initialize(_player : Player) -> void:
 		change_state(states[0])
 		process_mode = Node.PROCESS_MODE_INHERIT
 	print("init player state machine: %s" % str(states))
+	pass
 
 func change_state(new_state: PlayerState) -> void:
 	if new_state == null || new_state == curr_state:
@@ -28,12 +29,16 @@ func change_state(new_state: PlayerState) -> void:
 	prev_state = curr_state
 	curr_state = new_state
 	curr_state.enter()
+	pass
 
 func _process(delta: float) -> void:
 	change_state(curr_state.process(delta))
+	pass
 
 func _physics_process(delta: float) -> void:
 	change_state(curr_state.physics_process(delta))
+	pass
 	
 func _unhandled_input(event: InputEvent) -> void:
 	change_state(curr_state.handle_input(event))
+	pass

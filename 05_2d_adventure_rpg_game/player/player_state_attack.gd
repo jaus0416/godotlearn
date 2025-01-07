@@ -11,11 +11,12 @@ var attacking : bool = false
 @onready var walk : PlayerState = $"../Walk"
 @onready var attack_anim : AnimationPlayer = $"../../Sprite2D/AttackEffectedSprite/AnimationPlayer"
 @onready var audio : AudioStreamPlayer2D = $"../../Audio/AudioStreamPlayer2D"
+@onready var hurt_box : HurtBox = $"../../Interactions/HurtBox"
 
 func enter() -> void:
 	# animation
 	player.update_animation("attack")
-	attack_anim.play("attack" + "_" + player.anim_derition())
+	attack_anim.play("attack" + "_" + player.anim_diretion())
 	animation_player.animation_finished.connect(end_attack)
 	
 	# audio
@@ -24,17 +25,21 @@ func enter() -> void:
 	audio.play()
 	
 	attacking = true
+	# do hurt
+	await get_tree().create_timer(0.075).timeout
+	hurt_box.monitoring = true
 	pass
 	
 func exit() -> void:
 	animation_player.animation_finished.disconnect(end_attack)
 	attacking = false
+	hurt_box.monitoring = false
 	pass
 
 func process(_delta: float) -> PlayerState:
 	player.velocity -= player.velocity * decelerate_speed * _delta
 	if !attacking:
-		if player.deriction == Vector2.ZERO:
+		if player.direction == Vector2.ZERO:
 			return idle
 		else:
 			return walk
@@ -48,3 +53,4 @@ func handle_input(_event: InputEvent) -> PlayerState:
 
 func end_attack(_new_anim_name: String) -> void: 
 	attacking = false
+	pass
