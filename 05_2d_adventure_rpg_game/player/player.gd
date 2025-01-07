@@ -12,8 +12,12 @@ func _ready() -> void:
 	state_machine.initialize(self)
 
 func _process(delta: float) -> void:
-	deriction.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
-	deriction.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
+	#deriction.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
+	#deriction.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
+	deriction = Vector2(
+		Input.get_axis("move_left", "move_right"),
+		Input.get_axis("move_up", "move_down")
+	).normalized()
 
 func _physics_process(delta: float) -> void:
 	move_and_slide()
@@ -37,7 +41,7 @@ func set_deriction() -> bool:
 
 func update_animation(state : String) -> void:
 	var next_animation = state + "_" + anim_derition()
-	print("play animation: %s" % next_animation)
+	#print("play animation: %s" % next_animation)
 	animation_player.play(next_animation)
 	pass
 	
