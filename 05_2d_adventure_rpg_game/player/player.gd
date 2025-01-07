@@ -11,7 +11,7 @@ var deriction : Vector2 = Vector2.ZERO
 func _ready() -> void:
 	state_machine.initialize(self)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	#deriction.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	#deriction.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 	deriction = Vector2(
@@ -19,7 +19,7 @@ func _process(delta: float) -> void:
 		Input.get_axis("move_up", "move_down")
 	).normalized()
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	move_and_slide()
  
 func set_deriction() -> bool:
