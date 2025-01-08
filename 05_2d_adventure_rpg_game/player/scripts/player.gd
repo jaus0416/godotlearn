@@ -1,9 +1,10 @@
 extends CharacterBody2D
 class_name Player
 
+const DIR_4 = [Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT, Vector2.UP]
+
 var cardinal_direction : Vector2 = Vector2.DOWN
 var direction : Vector2 = Vector2.ZERO
-const DIR_4 = [Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT, Vector2.UP]
 
 signal DirectionChanged(new_direction : Vector2)
 
@@ -12,7 +13,9 @@ signal DirectionChanged(new_direction : Vector2)
 @onready var state_machine : PlayerStateMachine = $PlayerStateMachine
 
 func _ready() -> void:
+	PlayerManager.player = self
 	state_machine.initialize(self)
+	pass
 
 func _process(_delta: float) -> void:
 	direction = Vector2(

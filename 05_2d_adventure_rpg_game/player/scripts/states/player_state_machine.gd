@@ -13,11 +13,14 @@ func initialize(_player : Player) -> void:
 	for child in get_children():
 		if child is PlayerState:
 			states.append(child)
+	
+	for s in states:
+		s.player = _player
+			
 	if states.size() > 0:
-		states[0].player = _player
 		change_state(states[0])
 		process_mode = Node.PROCESS_MODE_INHERIT
-	print("init player state machine: %s" % str(states))
+	#print("init player state machine: %s" % str(states))
 	pass
 
 func change_state(new_state: PlayerState) -> void:
