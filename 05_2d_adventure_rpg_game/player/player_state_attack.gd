@@ -11,7 +11,7 @@ var attacking : bool = false
 @onready var walk : PlayerState = $"../Walk"
 @onready var attack_anim : AnimationPlayer = $"../../Sprite2D/AttackEffectedSprite/AnimationPlayer"
 @onready var audio : AudioStreamPlayer2D = $"../../Audio/AudioStreamPlayer2D"
-@onready var hurt_box : HurtBox = $"../../Interactions/HurtBox"
+@onready var hurt_box : HurtBox = %AttackHurtBox
 
 func enter() -> void:
 	# animation
