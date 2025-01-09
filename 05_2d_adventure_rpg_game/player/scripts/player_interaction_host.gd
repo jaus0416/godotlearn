@@ -4,7 +4,7 @@ class_name PlayerIntercationHost
 @onready var player : Player = $".."
 
 func _ready() -> void:
-	player.DirectionChanged.connect(update_deriction)
+	player.direction_changed.connect(update_deriction)
 	pass
 
 

@@ -2,7 +2,7 @@ extends Node
 class_name EnemyState
 
 var enemy : Enemy
-var state_machine = EnemyStateMachine
+var state_machine : EnemyStateMachine
 
 func init() -> void:
 	pass

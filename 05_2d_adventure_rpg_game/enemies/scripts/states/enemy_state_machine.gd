@@ -16,9 +16,9 @@ func initialize(_enemy : Enemy) -> void:
 			states.append(child)
 	
 	for s in states:
-			s.enemy = _enemy
-			s.state_machine = self
-			s.init()
+		s.enemy = _enemy
+		s.state_machine = self
+		s.init()
 	
 	if states.size() > 0:
 		change_state(states[0])

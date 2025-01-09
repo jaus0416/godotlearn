@@ -6,7 +6,7 @@ const DIR_4 = [Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT, Vector2.UP]
 var cardinal_direction : Vector2 = Vector2.DOWN
 var direction : Vector2 = Vector2.ZERO
 
-signal DirectionChanged(new_direction : Vector2)
+signal direction_changed(new_direction : Vector2)
 
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 @onready var sprite : Sprite2D = $Sprite2D
@@ -41,7 +41,7 @@ func set_direction() -> bool:
 	# 改变玩家朝向
 	sprite.scale.x = -1 if cardinal_direction == Vector2.LEFT else 1
 	# 全局通知玩家朝向变动
-	DirectionChanged.emit(new_direction)
+	direction_changed.emit(new_direction)
 	return true
 
 func update_animation(state : String) -> void:
