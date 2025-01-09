@@ -2,6 +2,10 @@ extends Node
 class_name PlayerState
 
 static var player : Player
+static var state_machine : PlayerStateMachine
+
+func init() -> void:
+	pass
 
 func enter() -> void:
 	pass

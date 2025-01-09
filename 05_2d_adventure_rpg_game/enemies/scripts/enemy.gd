@@ -3,14 +3,14 @@ class_name Enemy
 
 const DIR_4 = [Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT, Vector2.UP]
 
+signal direction_changed(new_direction : Vector2)
+signal enemy_damaged(hurt_box : HurtBox)
+signal enemy_destoryed(hurt_box : HurtBox)
+
 var cardinal_direction : Vector2 = Vector2.DOWN
 var direction : Vector2 = Vector2.ZERO
 var player : Player
 var invulnerable : bool = false
-
-signal direction_changed(new_direction : Vector2)
-signal enemy_damaged
-signal enemy_destoryed
 
 @export var hp : int = 3
 
@@ -65,12 +65,13 @@ func anim_diretion() -> String:
 	else:
 		return "side"
 
-func _take_damage(damage : int) -> void:
+func _take_damage(hurt_box : HurtBox) -> void:
 	if invulnerable:
 		return
-	hp -= damage
-	print("rest hp:" + str(hp))
-	enemy_damaged.emit()
+	hp -= hurt_box.damage
+	
+	#print("enemy[" + name + "] rest hp:" + str(hp))
+	enemy_damaged.emit(hurt_box)
 	if hp <= 0:
-		enemy_destoryed.emit()
+		enemy_destoryed.emit(hurt_box)
 	pass

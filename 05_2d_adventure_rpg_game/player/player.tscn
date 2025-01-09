@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cptswd26sm8d8"]
+[gd_scene load_steps=43 format=3 uid="uid://cptswd26sm8d8"]
 
 [ext_resource type="Script" path="res://05_2d_adventure_rpg_game/player/scripts/player.gd" id="1_53iid"]
 [ext_resource type="Texture2D" uid="uid://3365xg8dceug" path="res://assert/05/player/sprites/PlayerSprite02.png" id="2_bmhto"]
@@ -12,6 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://c41gvo8srxpy7" path="res://05_2d_adventure_rpg_game/generalnodes/hurtbox/hurt_box.tscn" id="10_1c2fu"]
 [ext_resource type="Script" path="res://05_2d_adventure_rpg_game/player/scripts/player_interaction_host.gd" id="10_pubyj"]
 [ext_resource type="Script" path="res://05_2d_adventure_rpg_game/player/scripts/player_camera.gd" id="11_femo5"]
+[ext_resource type="Script" path="res://05_2d_adventure_rpg_game/player/scripts/states/player_state_stun.gd" id="11_mwaf3"]
+[ext_resource type="PackedScene" uid="uid://cbixwq01t62mm" path="res://05_2d_adventure_rpg_game/generalnodes/hitbox/hit_box.tscn" id="13_n82s8"]
+[ext_resource type="AudioStream" uid="uid://ybjx3eohp804" path="res://assert/05/player/audio/hit_player.wav" id="14_x25l7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vpvph"]
 
@@ -463,6 +466,54 @@ tracks/0/keys = {
 "values": [13, 16]
 }
 
+[sub_resource type="Animation" id="Animation_0ivyg"]
+resource_name = "stun_down"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [30]
+}
+
+[sub_resource type="Animation" id="Animation_ihrym"]
+resource_name = "stun_up"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [31]
+}
+
+[sub_resource type="Animation" id="Animation_n21ca"]
+resource_name = "stun_side"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [32]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1xlgu"]
 _data = {
 "RESET": SubResource("Animation_as5hb"),
@@ -472,9 +523,81 @@ _data = {
 "idle_down": SubResource("Animation_60ind"),
 "idle_side": SubResource("Animation_uroha"),
 "idle_up": SubResource("Animation_h8hkp"),
+"stun_down": SubResource("Animation_0ivyg"),
+"stun_side": SubResource("Animation_n21ca"),
+"stun_up": SubResource("Animation_ihrym"),
 "walk_down": SubResource("Animation_ckpjv"),
 "walk_side": SubResource("Animation_5dbl0"),
 "walk_up": SubResource("Animation_h8rbm")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kunpf"]
+
+[sub_resource type="Animation" id="Animation_ukg24"]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_j8u1x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1vvk7"]
+resource_name = "damaged"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.0980392), Color(1, 1, 1, 1), Color(1, 1, 1, 0.196078), Color(1, 1, 1, 1), Color(1, 1, 1, 0.392157), Color(1, 1, 1, 1), Color(1, 1, 1, 0.588235), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Audio/AudioStreamPlayer2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("14_x25l7")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pqv2u"]
+_data = {
+"RESET": SubResource("Animation_j8u1x"),
+"damaged": SubResource("Animation_1vvk7"),
+"default": SubResource("Animation_ukg24")
 }
 
 [node name="Player" type="CharacterBody2D"]
@@ -534,10 +657,14 @@ script = ExtResource("4_jw1ef")
 
 [node name="Walk" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("5_nrgon")
+move_speed = null
 
 [node name="Attack" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("6_omogc")
 attack_sound = ExtResource("8_eh5le")
+
+[node name="Stun" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("11_mwaf3")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 editor_draw_limits = true
@@ -550,3 +677,16 @@ max_polyphony = 5
 
 [node name="Interactions" type="Node2D" parent="."]
 script = ExtResource("10_pubyj")
+
+[node name="HitBox" parent="." instance=ExtResource("13_n82s8")]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_kunpf")
+debug_color = Color(0.795532, 0.724115, 0.25083, 0.42)
+
+[node name="EffectAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pqv2u")
+}
