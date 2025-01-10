@@ -9,9 +9,9 @@ const DIR_4 = [Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT, Vector2.UP]
 var cardinal_direction : Vector2 = Vector2.DOWN
 var direction : Vector2 = Vector2.ZERO
 
-@export var invulnerable : bool = false
-@export var hp : int = 6
-@export var max_hp : int = 6
+var invulnerable : bool = false
+var max_hp : int = 6
+var hp : int = 0
 
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 @onready var effect_animation_player : AnimationPlayer = $EffectAnimationPlayer
