@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="GodotLearn"
-run/main_scene="res://05_2d_adventure_rpg_game/playground.tscn"
+run/main_scene="res://05_2d_adventure_rpg_game/levels/area_01/area_01.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 LevelManager="*res://05_2d_adventure_rpg_game/00_global/global_level_manager.gd"
 PlayerHud="*res://05_2d_adventure_rpg_game/GUI/player_hud/player_hud.tscn"
 PlayerManager="*res://05_2d_adventure_rpg_game/00_global/global_player_manager.gd"
+SceneTransition="*res://05_2d_adventure_rpg_game/GUI/scene_transition/scene_transition.tscn"
 
 [display]
 

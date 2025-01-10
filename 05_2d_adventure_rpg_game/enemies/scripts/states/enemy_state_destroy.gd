@@ -15,6 +15,7 @@ func init() -> void:
 	pass
 
 func enter() -> void:
+	enemy.invulnerable = true
 	_direction = enemy.global_position.direction_to(_damage_position)
 	
 	enemy.set_direction(_direction)
