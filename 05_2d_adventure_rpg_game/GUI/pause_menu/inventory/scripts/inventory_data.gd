@@ -59,9 +59,7 @@ func item_to_save(slot : SlotData) -> Dictionary:
 
 
 func parse_save_data(save_data : Array) -> void:
-	var size = slots.size()
 	slots.clear()
-	slots.resize(size)
 	
 	for i in save_data.size():
 		slots.append(item_from_save(save_data[i]))
