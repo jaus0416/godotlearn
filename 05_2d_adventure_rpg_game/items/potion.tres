@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://bmynfgbkqbmhg"]
+
+[ext_resource type="Script" path="res://05_2d_adventure_rpg_game/items/scripts/item_data.gd" id="1_jik8j"]
+[ext_resource type="Texture2D" uid="uid://csdapo5jnaegs" path="res://assert/05/items/sprites/items.png" id="2_bojee"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mwqv8"]
+atlas = ExtResource("2_bojee")
+region = Rect2(32, 0, 32, 32)
+
+[resource]
+script = ExtResource("1_jik8j")
+name = "Potion"
+description = "The red drink restores your health!"
+texture = SubResource("AtlasTexture_mwqv8")

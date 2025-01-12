@@ -1,12 +1,40 @@
-[gd_scene load_steps=2 format=3 uid="uid://cckb6damfbls1"]
+[gd_scene load_steps=8 format=3 uid="uid://cckb6damfbls1"]
 
 [ext_resource type="Script" path="res://05_2d_adventure_rpg_game/GUI/pause_menu/pause_menu.gd" id="1_ugkpd"]
+[ext_resource type="Texture2D" uid="uid://csdapo5jnaegs" path="res://assert/05/items/sprites/items.png" id="2_77l2e"]
+[ext_resource type="Script" path="res://05_2d_adventure_rpg_game/GUI/pause_menu/inventory/scripts/inventory_ui.gd" id="3_aokp2"]
+[ext_resource type="PackedScene" uid="uid://dd34fke0kff58" path="res://05_2d_adventure_rpg_game/GUI/pause_menu/inventory/inventory_slot.tscn" id="3_cdwlf"]
+[ext_resource type="Resource" uid="uid://bje7g0ganfnry" path="res://05_2d_adventure_rpg_game/GUI/pause_menu/inventory/player_inventory.tres" id="4_w6riv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2n2tk"]
+atlas = ExtResource("2_77l2e")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uctvb"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+texture = SubResource("AtlasTexture_2n2tk")
+texture_margin_left = 14.0
+texture_margin_top = 14.0
+texture_margin_right = 14.0
+texture_margin_bottom = 14.0
 
 [node name="PauseMenu" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_ugkpd")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -14,39 +42,94 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.372549, 0.372549, 0.372549, 0.654902)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -48.5
-offset_top = -33.0
-offset_right = 48.5
-offset_bottom = 33.0
+offset_left = -214.0
+offset_top = 59.0
+offset_right = -90.0
+offset_bottom = 90.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ButtonSave" type="Button" parent="VBoxContainer"]
+[node name="ButtonSave" type="Button" parent="Control/HBoxContainer"]
+custom_minimum_size = Vector2(60, 20)
 layout_mode = 2
 text = "Save"
 
-[node name="ButtonLoad" type="Button" parent="VBoxContainer"]
+[node name="ButtonLoad" type="Button" parent="Control/HBoxContainer"]
+custom_minimum_size = Vector2(60, 20)
 layout_mode = 2
 text = "Load
 "
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="Control"]
 modulate = Color(0.858218, 0.858218, 0.858218, 1)
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -34.0
-offset_top = -66.0
-offset_right = 33.0
-offset_bottom = -43.0
+offset_left = -214.0
+offset_top = -114.0
+offset_right = -147.0
+offset_bottom = -91.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "[paused]"
+
+[node name="ItemDescription" type="Label" parent="Control"]
+modulate = Color(0.858218, 0.858218, 0.858218, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -210.0
+offset_top = 18.0
+offset_right = -41.0
+offset_bottom = 49.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 10
+text = "The red drink restores your health!qwerqwerqwerqwerqwerq"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Control"]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 59.0
+offset_right = 222.0
+offset_bottom = 147.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_uctvb")
+
+[node name="GridContainer" type="GridContainer" parent="Control/PanelContainer"]
+layout_mode = 2
+columns = 5
+script = ExtResource("3_aokp2")
+data = ExtResource("4_w6riv")
+
+[node name="InventorySlot" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_cdwlf")]
+layout_mode = 2
+
+[node name="InventorySlot2" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_cdwlf")]
+layout_mode = 2
+
+[node name="InventorySlot3" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_cdwlf")]
+layout_mode = 2
+
+[node name="InventorySlot4" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_cdwlf")]
+layout_mode = 2
+
+[node name="InventorySlot5" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_cdwlf")]
+layout_mode = 2
+
+[node name="InventorySlot6" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_cdwlf")]
+layout_mode = 2
