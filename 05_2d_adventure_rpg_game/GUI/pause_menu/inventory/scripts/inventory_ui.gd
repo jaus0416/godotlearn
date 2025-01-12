@@ -25,8 +25,7 @@ func update_inventory() -> void:
 		add_child(new_slot)
 		new_slot.slot_data = s
 		new_slot.focus_entered.connect(item_focused)
-	await get_tree().process_frame
-	get_child(focus_index).grab_focus()
+	set_focus()
 	pass
 	
 func item_focused() -> void:
@@ -39,6 +38,11 @@ func item_focused() -> void:
 func on_inventory_changed() -> void:
 	clear_inventory()
 	update_inventory()
+	set_focus()
+	pass
+
+func set_focus():
+	if focus_index > data.slots.size():
+		focus_index = 0
 	await get_tree().process_frame
 	get_child(focus_index).grab_focus()
-	pass
