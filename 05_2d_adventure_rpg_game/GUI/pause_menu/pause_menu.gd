@@ -6,6 +6,7 @@ signal hidden
 @onready var button_save : Button = $Control/HBoxContainer/ButtonSave
 @onready var button_load : Button = $Control/HBoxContainer/ButtonLoad
 @onready var item_description : Label = $Control/ItemDescription
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 var is_paused : bool = false
 
@@ -27,7 +28,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	pass
 
 func show_pause_menu() -> void:
-	PlayerHud.visible = false
+	#PlayerHud.visible = false
 	get_tree().paused = true
 	visible = true
 	is_paused = true
@@ -36,7 +37,7 @@ func show_pause_menu() -> void:
 	pass
 
 func hide_pause_menu() -> void:
-	PlayerHud.visible = true
+	#PlayerHud.visible = true
 	get_tree().paused = false
 	visible = false
 	is_paused = false
@@ -62,4 +63,9 @@ func _on_load_pressed() -> void:
 
 func update_item_description(new_text : String) -> void:
 	item_description.text = new_text
+	pass
+
+func play_audio(audio : AudioStream) -> void:
+	audio_stream_player.stream = audio
+	audio_stream_player.play()
 	pass
