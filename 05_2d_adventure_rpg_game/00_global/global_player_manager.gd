@@ -3,6 +3,8 @@ extends Node
 const PLAYER = preload("res://05_2d_adventure_rpg_game/player/player.tscn")
 const INVENTORY_DATA : InventoryData = preload("res://05_2d_adventure_rpg_game/GUI/pause_menu/inventory/player_inventory.tres")
 
+signal interact_pressed 
+
 var player : Player
 var player_spawned : bool = false
 
