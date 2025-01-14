@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://bwipk2empwdib"]
+[gd_scene load_steps=39 format=3 uid="uid://bwipk2empwdib"]
 
 [ext_resource type="Script" path="res://05_2d_adventure_rpg_game/enemies/scripts/enemy.gd" id="1_6o08v"]
 [ext_resource type="Texture2D" uid="uid://b4spv80ev6qth" path="res://assert/05/enemies/slime/sprites/Slime.png" id="1_gsr0b"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" path="res://05_2d_adventure_rpg_game/enemies/scripts/drop_data.gd" id="11_k3kd0"]
 [ext_resource type="Resource" uid="uid://dqy1fl2l6ugqp" path="res://05_2d_adventure_rpg_game/items/gem.tres" id="12_ybuew"]
 [ext_resource type="Resource" uid="uid://bx147k5qpwauv" path="res://05_2d_adventure_rpg_game/items/apple.tres" id="13_viumu"]
+[ext_resource type="PackedScene" uid="uid://bw4id3op4y5av" path="res://05_2d_adventure_rpg_game/generalnodes/persistantdatahandler/persistant_data_handler.tscn" id="17_qa371"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sujdx"]
 radius = 5.0
@@ -811,3 +812,5 @@ hframes = 6
 libraries = {
 "": SubResource("AnimationLibrary_p45ds")
 }
+
+[node name="PersistantIsDead" parent="." instance=ExtResource("17_qa371")]

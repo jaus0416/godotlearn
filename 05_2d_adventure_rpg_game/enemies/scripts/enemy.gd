@@ -18,11 +18,22 @@ var invulnerable : bool = false
 @onready var sprite : Sprite2D = $Sprite2D
 @onready var hit_box : HitBox = $HitBox
 @onready var state_machine : EnemyStateMachine = $EnemyStateMachine
+@onready var persistant_is_dead: PersistantDataHandler = $PersistantIsDead
 
 func _ready() -> void:
 	state_machine.initialize(self)
 	player = PlayerManager.player
 	hit_box.damaged.connect(_take_damage)
+	
+	# 记录存活状态
+	persistant_is_dead.data_loaded.connect(free_if_dead)
+	free_if_dead()
+	pass
+
+func free_if_dead() -> void:
+	if persistant_is_dead.value:
+		queue_free()
+		pass
 	pass
 
 func _process(_delta: float) -> void:
@@ -74,4 +85,6 @@ func _take_damage(hurt_box : HurtBox) -> void:
 	enemy_damaged.emit(hurt_box)
 	if hp <= 0:
 		enemy_destoryed.emit(hurt_box)
+		# 持久化死亡状态
+		persistant_is_dead.set_value()
 	pass
