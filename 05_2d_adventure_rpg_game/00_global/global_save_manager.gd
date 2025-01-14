@@ -26,6 +26,7 @@ func save_game() -> void:
 	
 	# write file
 	var file := FileAccess.open(SAVE_PATH + "save.sav", FileAccess.WRITE)
+	# json 版本
 	var save_json = JSON.stringify(current_save)
 	file.store_line(save_json)
 	
@@ -39,6 +40,7 @@ func load_game() -> void:
 	var json := JSON.new()
 	json.parse(file.get_line())
 	var save_dict : Dictionary = json.get_data() as Dictionary
+
 	current_save = save_dict
 	
 	# load scene
@@ -76,3 +78,12 @@ func update_scene_path() -> void:
 func update_item_data() -> void:
 	current_save.items = PlayerManager.INVENTORY_DATA.get_save_data()
 	pass
+
+func add_persistant_value(value : String) -> void:
+	if !check_persistant_value(value):
+		current_save.persistence.append(value)
+	pass
+
+func check_persistant_value(value : String) -> bool:
+	var p = current_save.persistence as Array
+	return p.has(value)
