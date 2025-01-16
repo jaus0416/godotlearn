@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://dqy1fl2l6ugqp"]
+[gd_resource type="Resource" script_class="ItemData" load_steps=5 format=3 uid="uid://dqy1fl2l6ugqp"]
 
 [ext_resource type="Script" path="res://05_2d_adventure_rpg_game/items/scripts/item_data.gd" id="1_6be48"]
+[ext_resource type="Script" path="res://05_2d_adventure_rpg_game/items/item_effects/item_effect.gd" id="1_w0lbd"]
 [ext_resource type="Texture2D" uid="uid://csdapo5jnaegs" path="res://assert/05/items/sprites/items.png" id="2_ifxd6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qrwci"]
@@ -12,3 +13,4 @@ script = ExtResource("1_6be48")
 name = "Gem"
 description = "A valueable gem!"
 texture = SubResource("AtlasTexture_qrwci")
+effects = Array[ExtResource("1_w0lbd")]([])
