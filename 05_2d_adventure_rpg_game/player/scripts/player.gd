@@ -18,6 +18,8 @@ var hp : int = 0
 @onready var hit_box : HitBox = $HitBox
 @onready var sprite : Sprite2D = $Sprite2D
 @onready var state_machine : PlayerStateMachine = $PlayerStateMachine
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $Audio/AudioStreamPlayer2D
+
 
 func _ready() -> void:
 	# 全局玩家管理器
