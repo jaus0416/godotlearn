@@ -1,9 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://ytwh12i02m22"]
+[gd_scene load_steps=11 format=3 uid="uid://ytwh12i02m22"]
 
 [ext_resource type="Script" path="res://05_2d_adventure_rpg_game/interactable/dungeon/scripts/barred_door.gd" id="1_homag"]
 [ext_resource type="Texture2D" uid="uid://s4ywae5ssoly" path="res://assert/05/interactable/dungeon/dungeon_props.png" id="2_2c42i"]
 [ext_resource type="AudioStream" uid="uid://b24a1fgypwyag" path="res://assert/05/interactable/dungeon/bars_open.wav" id="3_mbp84"]
-[ext_resource type="PackedScene" uid="uid://bw4id3op4y5av" path="res://05_2d_adventure_rpg_game/generalnodes/persistantdatahandler/persistant_data_handler.tscn" id="4_1oohn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b7rpq"]
 size = Vector2(64, 66)
@@ -209,5 +208,3 @@ libraries = {
 autoplay = "closed"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-
-[node name="PersistantIsOpen" parent="." instance=ExtResource("4_1oohn")]

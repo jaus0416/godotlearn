@@ -1,7 +1,7 @@
 extends Node
 class_name InventoryUI
 
-const INVENTORY_SLOT = preload("res://05_2d_adventure_rpg_game/GUI/pause_menu/inventory/inventory_slot.tscn")
+const INVENTORY_SLOT = preload("res://05_2d_adventure_rpg_game/inventory/inventory_slot.tscn")
 
 var focus_index : int = 0
 

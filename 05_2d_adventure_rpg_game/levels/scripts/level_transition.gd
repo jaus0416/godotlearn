@@ -37,9 +37,10 @@ func _ready() -> void:
 	_place_player()
 	
 	await LevelManager.level_loaded
+	# TODO: 目前测试发现 dungeon 4-1 -> 2-3 的时候会出现 4-1 -> 2-3 -> 1-2 的情况，怀疑跟 monitor 和 用户的加载顺序有关，这里暂时先加一个时延 
+	await get_tree().create_timer(0.1).timeout
 	
 	monitoring = true
-	
 	body_entered.connect(_player_entered)
 	pass
 

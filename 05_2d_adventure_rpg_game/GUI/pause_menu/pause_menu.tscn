@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://05_2d_adventure_rpg_game/GUI/pause_menu/pause_menu.gd" id="1_ugkpd"]
 [ext_resource type="Texture2D" uid="uid://csdapo5jnaegs" path="res://assert/05/items/sprites/items.png" id="2_77l2e"]
-[ext_resource type="Script" path="res://05_2d_adventure_rpg_game/GUI/pause_menu/inventory/scripts/inventory_ui.gd" id="3_aokp2"]
-[ext_resource type="PackedScene" uid="uid://dd34fke0kff58" path="res://05_2d_adventure_rpg_game/GUI/pause_menu/inventory/inventory_slot.tscn" id="3_cdwlf"]
-[ext_resource type="Resource" uid="uid://bje7g0ganfnry" path="res://05_2d_adventure_rpg_game/GUI/pause_menu/inventory/player_inventory.tres" id="4_w6riv"]
+[ext_resource type="Script" path="res://05_2d_adventure_rpg_game/inventory/scripts/inventory_ui.gd" id="3_aokp2"]
+[ext_resource type="PackedScene" uid="uid://dd34fke0kff58" path="res://05_2d_adventure_rpg_game/inventory/inventory_slot.tscn" id="3_cdwlf"]
+[ext_resource type="Resource" uid="uid://bje7g0ganfnry" path="res://05_2d_adventure_rpg_game/inventory/player_inventory.tres" id="4_w6riv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2n2tk"]
 atlas = ExtResource("2_77l2e")
