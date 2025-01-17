@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://cptswd26sm8d8"]
+[gd_scene load_steps=46 format=3 uid="uid://cptswd26sm8d8"]
 
 [ext_resource type="Script" path="res://05_2d_adventure_rpg_game/player/scripts/player.gd" id="1_53iid"]
 [ext_resource type="Texture2D" uid="uid://3365xg8dceug" path="res://assert/05/player/sprites/PlayerSprite02.png" id="2_bmhto"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://05_2d_adventure_rpg_game/player/scripts/player_camera.gd" id="11_femo5"]
 [ext_resource type="Script" path="res://05_2d_adventure_rpg_game/player/scripts/states/player_state_stun.gd" id="11_mwaf3"]
 [ext_resource type="PackedScene" uid="uid://cbixwq01t62mm" path="res://05_2d_adventure_rpg_game/generalnodes/hitbox/hit_box.tscn" id="13_n82s8"]
+[ext_resource type="Script" path="res://05_2d_adventure_rpg_game/player/scripts/push_area.gd" id="14_2374v"]
 [ext_resource type="AudioStream" uid="uid://ybjx3eohp804" path="res://assert/05/player/audio/hit_player.wav" id="14_x25l7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vpvph"]
@@ -533,6 +534,9 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0bsgf"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mf13y"]
+size = Vector2(20, 16)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_kunpf"]
 
 [sub_resource type="Animation" id="Animation_j8u1x"]
@@ -688,6 +692,17 @@ monitoring = false
 position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_0bsgf")
 debug_color = Color(0.180305, 0.879577, 0.453486, 0.42)
+
+[node name="PushArea" type="Area2D" parent="Interactions"]
+collision_layer = 0
+collision_mask = 16
+monitorable = false
+script = ExtResource("14_2374v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactions/PushArea"]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_mf13y")
+debug_color = Color(0.945152, 0.329675, 0.676063, 0.42)
 
 [node name="HitBox" parent="." instance=ExtResource("13_n82s8")]
 collision_layer = 2

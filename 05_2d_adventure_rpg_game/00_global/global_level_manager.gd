@@ -1,6 +1,7 @@
 extends Node
 
 signal tilemap_bounds_changed(bounds : Array[Vector2])
+signal level_leaved
 signal level_load_started
 signal level_loaded
 
@@ -31,6 +32,7 @@ func load_new_level(
 	position_offset = _position_offset
 	
 	await SceneTransition.fade_out()
+	level_leaved.emit()
 	
 	level_load_started.emit()
 	

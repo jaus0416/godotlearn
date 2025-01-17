@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://didcp0lopyj0r"
-path="res://.godot/imported/treasure-chest.png-ddccf61969ad81d2e82759781599bf14.ctex"
+uid="uid://s4ywae5ssoly"
+path="res://.godot/imported/dungeon_props.png-4a617e02d295db3ec99377072439a0d4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assert/05/treasurechest/treasure-chest.png"
-dest_files=["res://.godot/imported/treasure-chest.png-ddccf61969ad81d2e82759781599bf14.ctex"]
+source_file="res://assert/05/interactable/dungeon/dungeon_props.png"
+dest_files=["res://.godot/imported/dungeon_props.png-4a617e02d295db3ec99377072439a0d4.ctex"]
 
 [params]
 

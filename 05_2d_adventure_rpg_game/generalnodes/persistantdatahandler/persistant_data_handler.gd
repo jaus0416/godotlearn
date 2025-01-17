@@ -6,14 +6,14 @@ signal data_loaded
 var value : bool = false
 
 func _ready() -> void:
-	get_value()
+	load_value()
 	pass
 	
 func set_value() -> void:
 	SaveManager.add_persistant_value(_get_name())
 	pass
 
-func get_value() -> void:
+func load_value() -> void:
 	value = SaveManager.check_persistant_value(_get_name())
 	data_loaded.emit()
 	pass

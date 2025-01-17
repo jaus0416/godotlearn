@@ -15,8 +15,19 @@ const PICKUP = preload("res://05_2d_adventure_rpg_game/items/item_pickup/item_pi
 var _damage_position : Vector2
 var _direction : Vector2
 
+@onready var persistant_is_dead: PersistantDataHandler = $"../../PersistantIsDead"
+
 func init() -> void:
+	# 记录存活状态
+	persistant_is_dead.data_loaded.connect(free_if_dead)
+	free_if_dead()
 	enemy.enemy_destoryed.connect(_on_enemy_destroyed)
+	pass
+
+func free_if_dead() -> void:
+	if persistant_is_dead.value:
+		enemy.queue_free()
+		pass
 	pass
 
 func enter() -> void:
@@ -34,6 +45,9 @@ func enter() -> void:
 	
 	#物品掉落
 	drop_items()
+	
+	# 持久化死亡状态
+	persistant_is_dead.load_value()
 	pass
 
 func exit() -> void:

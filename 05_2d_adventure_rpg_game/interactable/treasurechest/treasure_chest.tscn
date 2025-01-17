@@ -1,9 +1,9 @@
 [gd_scene load_steps=14 format=3 uid="uid://b0hk4xkj4hiub"]
 
 [ext_resource type="Script" path="res://05_2d_adventure_rpg_game/interactable/treasurechest/treasure_chest.gd" id="1_da185"]
-[ext_resource type="Texture2D" uid="uid://didcp0lopyj0r" path="res://assert/05/treasurechest/treasure-chest.png" id="2_ey6oe"]
+[ext_resource type="Texture2D" uid="uid://didcp0lopyj0r" path="res://assert/05/interactable/treasurechest/treasure-chest.png" id="2_ey6oe"]
 [ext_resource type="Texture2D" uid="uid://csdapo5jnaegs" path="res://assert/05/items/sprites/items.png" id="3_0ovo2"]
-[ext_resource type="AudioStream" uid="uid://b0027nufki8q0" path="res://assert/05/treasurechest/treasure-open.wav" id="4_ugha4"]
+[ext_resource type="AudioStream" uid="uid://b0027nufki8q0" path="res://assert/05/interactable/treasurechest/treasure-open.wav" id="4_ugha4"]
 [ext_resource type="PackedScene" uid="uid://bw4id3op4y5av" path="res://05_2d_adventure_rpg_game/generalnodes/persistantdatahandler/persistant_data_handler.tscn" id="5_0xsiy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8slrv"]
