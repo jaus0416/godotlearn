@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkfks0fw4eh3i"]
+
+[ext_resource type="Script" path="res://05_2d_adventure_rpg_game/generalnodes/itemmagnet/item_magnet.gd" id="1_i17pb"]
+[ext_resource type="AudioStream" uid="uid://canmbv3vuyykx" path="res://assert/05/player/audio/catch.wav" id="2_68i60"]
+
+[node name="ItemMagnet" type="Area2D"]
+collision_layer = 0
+monitorable = false
+script = ExtResource("1_i17pb")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_68i60")

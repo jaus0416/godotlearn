@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://cptswd26sm8d8"]
+[gd_scene load_steps=49 format=3 uid="uid://cptswd26sm8d8"]
 
 [ext_resource type="Script" path="res://05_2d_adventure_rpg_game/player/scripts/player.gd" id="1_53iid"]
 [ext_resource type="Texture2D" uid="uid://3365xg8dceug" path="res://assert/05/player/sprites/PlayerSprite02.png" id="2_bmhto"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" path="res://05_2d_adventure_rpg_game/player/scripts/push_area.gd" id="14_2374v"]
 [ext_resource type="AudioStream" uid="uid://ybjx3eohp804" path="res://assert/05/player/audio/hit_player.wav" id="14_x25l7"]
 [ext_resource type="Script" path="res://05_2d_adventure_rpg_game/player/scripts/abilities/abilities.gd" id="17_v15e2"]
+[ext_resource type="PackedScene" uid="uid://bkfks0fw4eh3i" path="res://05_2d_adventure_rpg_game/generalnodes/itemmagnet/item_magnet.tscn" id="18_dluw0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vpvph"]
 
@@ -607,6 +608,9 @@ _data = {
 "default": SubResource("Animation_ukg24")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_8kniq"]
+radius = 50.0
+
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(256, 152)
 collision_mask = 16
@@ -720,3 +724,10 @@ libraries = {
 
 [node name="Abilities" type="Node" parent="."]
 script = ExtResource("17_v15e2")
+
+[node name="ItemMagnet" parent="." instance=ExtResource("18_dluw0")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemMagnet"]
+position = Vector2(0, -17)
+shape = SubResource("CircleShape2D_8kniq")
+debug_color = Color(0.864628, 0.279481, 0.572744, 0.25098)
