@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://cptswd26sm8d8"]
+[gd_scene load_steps=47 format=3 uid="uid://cptswd26sm8d8"]
 
 [ext_resource type="Script" path="res://05_2d_adventure_rpg_game/player/scripts/player.gd" id="1_53iid"]
 [ext_resource type="Texture2D" uid="uid://3365xg8dceug" path="res://assert/05/player/sprites/PlayerSprite02.png" id="2_bmhto"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://cbixwq01t62mm" path="res://05_2d_adventure_rpg_game/generalnodes/hitbox/hit_box.tscn" id="13_n82s8"]
 [ext_resource type="Script" path="res://05_2d_adventure_rpg_game/player/scripts/push_area.gd" id="14_2374v"]
 [ext_resource type="AudioStream" uid="uid://ybjx3eohp804" path="res://assert/05/player/audio/hit_player.wav" id="14_x25l7"]
+[ext_resource type="Script" path="res://05_2d_adventure_rpg_game/player/scripts/abilities/abilities.gd" id="17_v15e2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vpvph"]
 
@@ -716,3 +717,6 @@ debug_color = Color(0.795532, 0.724115, 0.25083, 0.42)
 libraries = {
 "": SubResource("AnimationLibrary_pqv2u")
 }
+
+[node name="Abilities" type="Node" parent="."]
+script = ExtResource("17_v15e2")

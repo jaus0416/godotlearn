@@ -57,6 +57,8 @@ func _on_player_enter() -> void:
 	_can_see_player = true
 	if state_machine.curr_state is EnemyStateStun:
 		return
+	if state_machine.curr_state is EnemyStateDestory:
+		return
 	state_machine.change_state(self)
 	pass
 	

@@ -1,0 +1,78 @@
+[gd_scene load_steps=9 format=3 uid="uid://t5bx4la7aueh"]
+
+[ext_resource type="Script" path="res://05_2d_adventure_rpg_game/player/scripts/abilities/boomerang.gd" id="1_3kequ"]
+[ext_resource type="Texture2D" uid="uid://bxphchgt7bxyk" path="res://assert/05/player/sprites/boomerang.png" id="2_kn3an"]
+[ext_resource type="PackedScene" uid="uid://c41gvo8srxpy7" path="res://05_2d_adventure_rpg_game/generalnodes/hurtbox/hurt_box.tscn" id="3_crwff"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ylwby"]
+radius = 13.0
+
+[sub_resource type="Animation" id="Animation_aii18"]
+resource_name = "boomerang"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0366667, 0.0733333, 0.11, 0.146667, 0.183333, 0.22, 0.256667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_x66ke"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6rhmf"]
+_data = {
+"RESET": SubResource("Animation_x66ke"),
+"boomerang": SubResource("Animation_aii18")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_66b82"]
+radius = 13.0
+
+[node name="Boomerang" type="Node2D"]
+script = ExtResource("1_3kequ")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -16)
+texture = ExtResource("2_kn3an")
+hframes = 8
+
+[node name="Area2D" type="Area2D" parent="."]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -16)
+shape = SubResource("CircleShape2D_ylwby")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_6rhmf")
+}
+autoplay = "RESET"
+
+[node name="HurtBox" parent="." instance=ExtResource("3_crwff")]
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, -16)
+shape = SubResource("CircleShape2D_66b82")
+debug_color = Color(0.949099, 0.398893, 0.340483, 0.42)
