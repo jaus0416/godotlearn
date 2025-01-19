@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://oh82axp6ok0t"]
+[gd_scene load_steps=12 format=4 uid="uid://oh82axp6ok0t"]
 
 [ext_resource type="PackedScene" uid="uid://6faboocv6p58" path="res://05_2d_adventure_rpg_game/tailmap/grass_01.tscn" id="1_sbo3i"]
 [ext_resource type="Script" path="res://05_2d_adventure_rpg_game/levels/scripts/level.gd" id="1_yabvc"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://bcc74t2n24d63" path="res://05_2d_adventure_rpg_game/npc/npc_behavior_wander.tscn" id="7_bkkbv"]
 [ext_resource type="Resource" uid="uid://fvdrqigyuexk" path="res://05_2d_adventure_rpg_game/npc/resource/npc_01.tres" id="7_jphsw"]
 [ext_resource type="Resource" uid="uid://4tub5am6bn1w" path="res://05_2d_adventure_rpg_game/npc/resource/npc_02.tres" id="9_k0sjl"]
+[ext_resource type="PackedScene" uid="uid://52ofc4p84xxt" path="res://05_2d_adventure_rpg_game/npc/npc_behavior_patrol.tscn" id="10_ggluq"]
+[ext_resource type="PackedScene" uid="uid://bmg33xfswq0q2" path="res://05_2d_adventure_rpg_game/npc/patrol_location.tscn" id="11_y3hjh"]
 
 [node name="Area01" type="Node2D"]
 script = ExtResource("1_yabvc")
@@ -46,8 +48,22 @@ npc_resource = ExtResource("7_jphsw")
 [node name="NpcBehaviorWander" parent="NPC" instance=ExtResource("7_bkkbv")]
 
 [node name="NPC2" parent="." instance=ExtResource("6_akvgi")]
-position = Vector2(368, 184)
+position = Vector2(344, 212)
 npc_resource = ExtResource("9_k0sjl")
 
-[node name="NpcBehaviorWander" parent="NPC2" instance=ExtResource("7_bkkbv")]
-wander_duration = 4.0
+[node name="NpcBehaviorPatrol" parent="NPC2" instance=ExtResource("10_ggluq")]
+
+[node name="PatrolLocation" parent="NPC2/NpcBehaviorPatrol" instance=ExtResource("11_y3hjh")]
+modulate = Color(1, 0, 0, 1)
+
+[node name="PatrolLocation2" parent="NPC2/NpcBehaviorPatrol" instance=ExtResource("11_y3hjh")]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(64, -1)
+
+[node name="PatrolLocation3" parent="NPC2/NpcBehaviorPatrol" instance=ExtResource("11_y3hjh")]
+modulate = Color(0, 1, 0, 1)
+position = Vector2(32, 44)
+
+[node name="PatrolLocation4" parent="NPC2/NpcBehaviorPatrol" instance=ExtResource("11_y3hjh")]
+modulate = Color(0, 1, 1, 1)
+position = Vector2(-56, 61)
