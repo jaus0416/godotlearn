@@ -3,6 +3,8 @@ extends Node
 const PLAYER = preload("res://05_2d_adventure_rpg_game/player/player.tscn")
 const INVENTORY_DATA : InventoryData = preload("res://05_2d_adventure_rpg_game/inventory/player_inventory.tres")
 
+# 实际上信号通过 idle walk 状态发出，这里忽略错误
+@warning_ignore("unused_signal")
 signal interact_pressed
 
 var player : Player
