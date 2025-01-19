@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=4 uid="uid://ba3ef4x5tp6tk"]
+[gd_scene load_steps=9 format=4 uid="uid://ba3ef4x5tp6tk"]
 
 [ext_resource type="Script" path="res://05_2d_adventure_rpg_game/levels/scripts/level.gd" id="1_2f61o"]
 [ext_resource type="PackedScene" uid="uid://dnckd2ntm0dqn" path="res://05_2d_adventure_rpg_game/levels/level_transition.tscn" id="2_qfqax"]
+[ext_resource type="AudioStream" uid="uid://c01u0c1q7e4jk" path="res://assert/05/levels/music/example_music_01.ogg" id="2_ycjrb"]
 [ext_resource type="PackedScene" uid="uid://6faboocv6p58" path="res://05_2d_adventure_rpg_game/tailmap/grass_01.tscn" id="3_i1o8e"]
 [ext_resource type="PackedScene" uid="uid://dvod8x4vgcg30" path="res://05_2d_adventure_rpg_game/levels/player_spawn.tscn" id="4_33wcb"]
 [ext_resource type="PackedScene" uid="uid://dn1xf025fd1oc" path="res://05_2d_adventure_rpg_game/items/item_pickup/item_pick_up.tscn" id="6_buy8l"]
@@ -10,6 +11,7 @@
 
 [node name="Area04" type="Node2D"]
 script = ExtResource("1_2f61o")
+music = ExtResource("2_ycjrb")
 
 [node name="LevelTransition" parent="." instance=ExtResource("2_qfqax")]
 position = Vector2(240, -32)

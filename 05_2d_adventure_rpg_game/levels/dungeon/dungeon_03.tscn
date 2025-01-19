@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=4 uid="uid://csaltdvvqpqig"]
+[gd_scene load_steps=10 format=4 uid="uid://csaltdvvqpqig"]
 
 [ext_resource type="Script" path="res://05_2d_adventure_rpg_game/levels/scripts/level.gd" id="1_vgb62"]
+[ext_resource type="AudioStream" uid="uid://b776kteu4uw3b" path="res://assert/05/levels/music/example_music_02.ogg" id="2_v1tya"]
 [ext_resource type="PackedScene" uid="uid://he0eb0cywcgf" path="res://05_2d_adventure_rpg_game/tailmap/dungon_tilemap_01.tscn" id="2_xlha1"]
 [ext_resource type="PackedScene" uid="uid://dvod8x4vgcg30" path="res://05_2d_adventure_rpg_game/levels/player_spawn.tscn" id="3_bhnkr"]
 [ext_resource type="PackedScene" uid="uid://dnckd2ntm0dqn" path="res://05_2d_adventure_rpg_game/levels/level_transition.tscn" id="4_v3dbd"]
@@ -11,6 +12,7 @@
 
 [node name="Dungeon03" type="Node2D"]
 script = ExtResource("1_vgb62")
+music = ExtResource("2_v1tya")
 
 [node name="DungeonTilemap01" parent="." instance=ExtResource("2_xlha1")]
 z_index = -1

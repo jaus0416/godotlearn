@@ -1,13 +1,15 @@
-[gd_scene load_steps=6 format=4 uid="uid://ck18qcfqdlt7o"]
+[gd_scene load_steps=7 format=4 uid="uid://ck18qcfqdlt7o"]
 
 [ext_resource type="Script" path="res://05_2d_adventure_rpg_game/levels/scripts/level.gd" id="1_mw36v"]
 [ext_resource type="PackedScene" uid="uid://6faboocv6p58" path="res://05_2d_adventure_rpg_game/tailmap/grass_01.tscn" id="2_6ocic"]
+[ext_resource type="AudioStream" uid="uid://c01u0c1q7e4jk" path="res://assert/05/levels/music/example_music_01.ogg" id="2_v3dt1"]
 [ext_resource type="PackedScene" uid="uid://bwipk2empwdib" path="res://05_2d_adventure_rpg_game/enemies/slime/slime.tscn" id="2_vvj7x"]
 [ext_resource type="PackedScene" uid="uid://dvod8x4vgcg30" path="res://05_2d_adventure_rpg_game/levels/player_spawn.tscn" id="3_il3po"]
 [ext_resource type="PackedScene" uid="uid://dnckd2ntm0dqn" path="res://05_2d_adventure_rpg_game/levels/level_transition.tscn" id="5_bwhyn"]
 
 [node name="Area03" type="Node2D"]
 script = ExtResource("1_mw36v")
+music = ExtResource("2_v3dt1")
 
 [node name="Slime" parent="." instance=ExtResource("2_vvj7x")]
 position = Vector2(260, 90)
