@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="GodotLearn"
+config/tags=PackedStringArray("2d", "aarpg")
 run/main_scene="res://05_2d_adventure_rpg_game/levels/area_01/area_01.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
@@ -24,6 +25,7 @@ PlayerManager="*res://05_2d_adventure_rpg_game/00_global/global_player_manager.g
 SceneTransition="*res://05_2d_adventure_rpg_game/GUI/scene_transition/scene_transition.tscn"
 SaveManager="*res://05_2d_adventure_rpg_game/00_global/global_save_manager.gd"
 PauseMenu="*res://05_2d_adventure_rpg_game/GUI/pause_menu/pause_menu.tscn"
+DialogueSystem="*res://05_2d_adventure_rpg_game/GUI/dialogue_system/dialogue_system.tscn"
 
 [display]
 
@@ -32,6 +34,10 @@ window/size/viewport_height=270
 window/size/window_width_override=1920
 window/size/window_height_override=1080
 window/stretch/mode="canvas_items"
+
+[gui]
+
+theme/custom_font="res://assert/05/GUI/fonts/Abaddon Light.ttf"
 
 [input]
 

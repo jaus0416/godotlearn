@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://wfjg51jnaf62"
-path="res://.godot/imported/Abaddon Light.ttf-ef81705b12b2f471fccd241ada53225e.fontdata"
+uid="uid://e3w1e4a5ppe2"
+path="res://.godot/imported/m5x7.ttf-b8b8783b04a804e5595d7ff423783d9c.fontdata"
 
 [deps]
 
-source_file="res://assert/05/npc/fonts/Abaddon Light.ttf"
-dest_files=["res://.godot/imported/Abaddon Light.ttf-ef81705b12b2f471fccd241ada53225e.fontdata"]
+source_file="res://assert/05/GUI/fonts/m5x7.ttf"
+dest_files=["res://.godot/imported/m5x7.ttf-b8b8783b04a804e5595d7ff423783d9c.fontdata"]
 
 [params]
 
