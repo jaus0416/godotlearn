@@ -20,6 +20,7 @@ func clear_inventory() -> void:
 	pass
 	
 func update_inventory() -> void:
+	clear_inventory()
 	for s in data.slots:
 		var new_slot = INVENTORY_SLOT.instantiate()
 		add_child(new_slot)

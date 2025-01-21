@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("1_ujtgw")
-nap_name = "Oren"
+npc_name = "阿蓝"
 sprite = ExtResource("2_0nf7w")
-portait = ExtResource("1_0jrc7")
-dialogue_audio_pitch = ""
+portrait = ExtResource("1_0jrc7")
+dialogue_audio_pitch = 1.0

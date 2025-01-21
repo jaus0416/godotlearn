@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://oh82axp6ok0t"]
+[gd_scene load_steps=15 format=4 uid="uid://oh82axp6ok0t"]
 
 [ext_resource type="PackedScene" uid="uid://6faboocv6p58" path="res://05_2d_adventure_rpg_game/tailmap/grass_01.tscn" id="1_sbo3i"]
 [ext_resource type="Script" path="res://05_2d_adventure_rpg_game/levels/scripts/level.gd" id="1_yabvc"]
@@ -9,7 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://bcc74t2n24d63" path="res://05_2d_adventure_rpg_game/npc/npc_behavior_wander.tscn" id="7_bkkbv"]
 [ext_resource type="Resource" uid="uid://fvdrqigyuexk" path="res://05_2d_adventure_rpg_game/npc/resource/npc_01.tres" id="7_jphsw"]
 [ext_resource type="Resource" uid="uid://4tub5am6bn1w" path="res://05_2d_adventure_rpg_game/npc/resource/npc_02.tres" id="9_k0sjl"]
+[ext_resource type="PackedScene" uid="uid://i8pgx1qvfnby" path="res://05_2d_adventure_rpg_game/interactable/dialogue/dialogue_interaction.tscn" id="9_tjit7"]
+[ext_resource type="Script" path="res://05_2d_adventure_rpg_game/interactable/dialogue/dialogue_text.gd" id="10_e00yk"]
 [ext_resource type="PackedScene" uid="uid://52ofc4p84xxt" path="res://05_2d_adventure_rpg_game/npc/npc_behavior_patrol.tscn" id="10_ggluq"]
+[ext_resource type="Resource" uid="uid://bfnusbh2qwjo4" path="res://05_2d_adventure_rpg_game/player/hero.tres" id="11_fxjak"]
 [ext_resource type="PackedScene" uid="uid://bmg33xfswq0q2" path="res://05_2d_adventure_rpg_game/npc/patrol_location.tscn" id="11_y3hjh"]
 
 [node name="Area01" type="Node2D"]
@@ -46,6 +49,23 @@ position = Vector2(112, 200)
 npc_resource = ExtResource("7_jphsw")
 
 [node name="NpcBehaviorWander" parent="NPC" instance=ExtResource("7_bkkbv")]
+
+[node name="DialogueInteraction" parent="NPC" instance=ExtResource("9_tjit7")]
+
+[node name="DialogueText" type="Node" parent="NPC/DialogueInteraction"]
+script = ExtResource("10_e00yk")
+text = "hi, [b]小虾米[/b]
+很高兴见到你，我的名字叫啊蓝，而且我只会重复这一段话。"
+
+[node name="DialogueText2" type="Node" parent="NPC/DialogueInteraction"]
+script = ExtResource("10_e00yk")
+text = "[wave]你好！[/wave]
+阿蓝，你有什么要对我说的吗？"
+npc_info = ExtResource("11_fxjak")
+
+[node name="DialogueText3" type="Node" parent="NPC/DialogueInteraction"]
+script = ExtResource("10_e00yk")
+text = "很[wave]高兴[/wave]见到你，[b][color=orange]再见！！[/color][/b]"
 
 [node name="NPC2" parent="." instance=ExtResource("6_akvgi")]
 position = Vector2(344, 212)

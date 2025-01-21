@@ -1,11 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://cn2nixc1xokjr"]
+[gd_scene load_steps=16 format=3 uid="uid://cn2nixc1xokjr"]
 
 [ext_resource type="Script" path="res://05_2d_adventure_rpg_game/GUI/dialogue_system/dialogue_system.gd" id="1_vdj2p"]
 [ext_resource type="Texture2D" uid="uid://b68scdnomags6" path="res://assert/05/GUI/dialogue_system/sprites/text-bubble.png" id="2_qo110"]
 [ext_resource type="FontFile" uid="uid://wfjg51jnaf62" path="res://assert/05/GUI/fonts/Abaddon Light.ttf" id="3_im8ia"]
 [ext_resource type="FontFile" uid="uid://bjvlg2po1wdjb" path="res://assert/05/GUI/fonts/Abaddon Bold.ttf" id="4_3no1v"]
 [ext_resource type="Texture2D" uid="uid://dm2jjtx2m5wyv" path="res://assert/05/npc/sprites/portraits/npc_portrait_01.png" id="5_ei8lc"]
+[ext_resource type="AudioStream" uid="uid://bgpjhm12offmr" path="res://assert/05/GUI/dialogue_system/audio/voice_blip.wav" id="6_in2eu"]
 [ext_resource type="FontFile" uid="uid://e3w1e4a5ppe2" path="res://assert/05/GUI/fonts/m5x7.ttf" id="6_kquag"]
+[ext_resource type="Script" path="res://05_2d_adventure_rpg_game/GUI/dialogue_system/dialogue_portrait.gd" id="6_pau5x"]
 
 [sub_resource type="Gradient" id="Gradient_822y1"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -37,6 +39,21 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
+[sub_resource type="Animation" id="Animation_wgwre"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_316u3"]
 resource_name = "default"
 loop_mode = 1
@@ -51,21 +68,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1.2, 1.4, 1.5, 1), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_wgwre"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jkuaq"]
@@ -126,12 +128,12 @@ text = "Example [b]Text!!![/b]
 fit_content = true
 scroll_active = false
 
-[node name="Label" type="Label" parent="DialogueUI"]
+[node name="NameLabel" type="Label" parent="DialogueUI"]
 layout_mode = 0
 offset_left = 97.0
-offset_top = 163.0
+offset_top = 143.0
 offset_right = 137.0
-offset_bottom = 186.0
+offset_bottom = 166.0
 theme_override_colors/font_color = Color(0.894118, 0.862745, 0.796078, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -141,15 +143,20 @@ theme_override_fonts/font = ExtResource("4_3no1v")
 text = "NAME"
 vertical_alignment = 1
 
-[node name="PortaitSprite" type="Sprite2D" parent="DialogueUI"]
+[node name="PortraitSprite" type="Sprite2D" parent="DialogueUI"]
 position = Vector2(51, 202)
 scale = Vector2(0.87, 0.925676)
 texture = ExtResource("5_ei8lc")
 hframes = 4
+script = ExtResource("6_pau5x")
 
 [node name="Timer" type="Timer" parent="DialogueUI"]
+one_shot = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="DialogueUI"]
+stream = ExtResource("6_in2eu")
+max_polyphony = 6
+bus = &"SFX"
 
 [node name="DialogueProgressIndicator" type="PanelContainer" parent="DialogueUI"]
 self_modulate = Color(0.413634, 0.906897, 0.523354, 1)
