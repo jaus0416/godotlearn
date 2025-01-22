@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cn2nixc1xokjr"]
+[gd_scene load_steps=17 format=3 uid="uid://cn2nixc1xokjr"]
 
 [ext_resource type="Script" path="res://05_2d_adventure_rpg_game/GUI/dialogue_system/dialogue_system.gd" id="1_vdj2p"]
 [ext_resource type="Texture2D" uid="uid://b68scdnomags6" path="res://assert/05/GUI/dialogue_system/sprites/text-bubble.png" id="2_qo110"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://bgpjhm12offmr" path="res://assert/05/GUI/dialogue_system/audio/voice_blip.wav" id="6_in2eu"]
 [ext_resource type="FontFile" uid="uid://e3w1e4a5ppe2" path="res://assert/05/GUI/fonts/m5x7.ttf" id="6_kquag"]
 [ext_resource type="Script" path="res://05_2d_adventure_rpg_game/GUI/dialogue_system/dialogue_portrait.gd" id="6_pau5x"]
+[ext_resource type="Theme" uid="uid://cjbx56unn4pcn" path="res://05_2d_adventure_rpg_game/GUI/dialogue_system/dialogue_choice_theme.tres" id="9_psvcj"]
 
 [sub_resource type="Gradient" id="Gradient_822y1"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -78,7 +79,7 @@ _data = {
 
 [node name="DialogueSystem" type="CanvasLayer"]
 process_mode = 3
-layer = 0
+layer = 3
 script = ExtResource("1_vdj2p")
 
 [node name="DialogueUI" type="Control" parent="."]
@@ -178,3 +179,33 @@ libraries = {
 "": SubResource("AnimationLibrary_jkuaq")
 }
 autoplay = "default"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DialogueUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -79.0
+offset_top = -75.0
+offset_right = 123.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("9_psvcj")
+
+[node name="Button" type="Button" parent="DialogueUI/VBoxContainer"]
+layout_mode = 2
+text = "choice"
+alignment = 0
+
+[node name="Button2" type="Button" parent="DialogueUI/VBoxContainer"]
+layout_mode = 2
+text = "choice"
+alignment = 0
+
+[node name="Button3" type="Button" parent="DialogueUI/VBoxContainer"]
+layout_mode = 2
+text = "choice"
+alignment = 0

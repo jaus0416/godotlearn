@@ -40,7 +40,8 @@ func player_interact() -> void:
 	await get_tree().process_frame
 	await get_tree().process_frame
 	DialogueSystem.show_dialog(dialogue_items)
-	DialogueSystem.finished.connect(_on_dialogue_finished)
+	if !DialogueSystem.finished.is_connected(_on_dialogue_finished):
+		DialogueSystem.finished.connect(_on_dialogue_finished)
 	pass
 
 func _on_dialogue_finished() -> void:

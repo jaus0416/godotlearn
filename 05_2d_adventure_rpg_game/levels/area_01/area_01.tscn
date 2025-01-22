@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://oh82axp6ok0t"]
+[gd_scene load_steps=17 format=4 uid="uid://oh82axp6ok0t"]
 
 [ext_resource type="PackedScene" uid="uid://6faboocv6p58" path="res://05_2d_adventure_rpg_game/tailmap/grass_01.tscn" id="1_sbo3i"]
 [ext_resource type="Script" path="res://05_2d_adventure_rpg_game/levels/scripts/level.gd" id="1_yabvc"]
@@ -14,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://52ofc4p84xxt" path="res://05_2d_adventure_rpg_game/npc/npc_behavior_patrol.tscn" id="10_ggluq"]
 [ext_resource type="Resource" uid="uid://bfnusbh2qwjo4" path="res://05_2d_adventure_rpg_game/player/hero.tres" id="11_fxjak"]
 [ext_resource type="PackedScene" uid="uid://bmg33xfswq0q2" path="res://05_2d_adventure_rpg_game/npc/patrol_location.tscn" id="11_y3hjh"]
+[ext_resource type="Script" path="res://05_2d_adventure_rpg_game/interactable/dialogue/dialogue_choice.gd" id="15_2mjom"]
+[ext_resource type="Script" path="res://05_2d_adventure_rpg_game/interactable/dialogue/dialogue_branch.gd" id="16_w5sj2"]
 
 [node name="Area01" type="Node2D"]
 script = ExtResource("1_yabvc")
@@ -83,3 +85,32 @@ modulate = Color(1, 1, 0, 1)
 [node name="PatrolLocation2" parent="NPC2/NpcBehaviorPatrol" instance=ExtResource("11_y3hjh")]
 modulate = Color(0, 1, 0, 1)
 position = Vector2(100, -48)
+
+[node name="DialogueInteraction" parent="NPC2" instance=ExtResource("9_tjit7")]
+
+[node name="DialogueText" type="Node" parent="NPC2/DialogueInteraction"]
+script = ExtResource("10_e00yk")
+text = "hi， 你好啊，可以帮我去地牢中找到宝物吗？"
+
+[node name="DialogueChoice" type="Node" parent="NPC2/DialogueInteraction"]
+script = ExtResource("15_2mjom")
+
+[node name="DialogueBranch" type="Node" parent="NPC2/DialogueInteraction/DialogueChoice"]
+script = ExtResource("16_w5sj2")
+text = "好，没问题"
+
+[node name="DialogueText" type="Node" parent="NPC2/DialogueInteraction/DialogueChoice/DialogueBranch"]
+script = ExtResource("10_e00yk")
+text = "谢谢你英雄"
+
+[node name="DialogueText2" type="Node" parent="NPC2/DialogueInteraction/DialogueChoice/DialogueBranch"]
+script = ExtResource("10_e00yk")
+text = "进入地下城的时候要小心！！"
+
+[node name="DialogueBranch2" type="Node" parent="NPC2/DialogueInteraction/DialogueChoice"]
+script = ExtResource("16_w5sj2")
+text = "不行"
+
+[node name="DialogueText" type="Node" parent="NPC2/DialogueInteraction/DialogueChoice/DialogueBranch2"]
+script = ExtResource("10_e00yk")
+text = "哦不！"
