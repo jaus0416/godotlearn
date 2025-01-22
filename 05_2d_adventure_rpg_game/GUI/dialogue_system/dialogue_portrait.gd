@@ -28,17 +28,22 @@ func check_mouth_open(letter : String) -> void:
 			#mouth_open_frames =0
 		open_mouth = true
 		mouth_open_frames += 3
-		print("audio_pitch_base: " + str(audio_pitch_base))
 		audio_stream_player.pitch_scale = randf_range(audio_pitch_base - 0.2, audio_pitch_base + 0.2)
 		audio_stream_player.play()
 	if '.,!?。，！？'.contains(letter):
+		audio_stream_player.pitch_scale = audio_pitch_base - 0.1
+		audio_stream_player.play()
 		mouth_open_frames = 0
+		
 	#print("letter: " + letter + ", mouth_open_frames: " + str(mouth_open_frames))
 	if mouth_open_frames > 0:
 		mouth_open_frames -= 1
 	
 	if mouth_open_frames == 0:
-		open_mouth = false
+		if open_mouth:
+			open_mouth = false
+			audio_stream_player.pitch_scale = randf_range(audio_pitch_base - 0.4, audio_pitch_base + 0.1)
+			audio_stream_player.play()
 	pass
 
 func blinker() -> void:

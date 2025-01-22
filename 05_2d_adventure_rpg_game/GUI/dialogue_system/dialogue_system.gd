@@ -90,7 +90,11 @@ func start_dialogue() -> void:
 
 func start_timer() -> void:
 	timer.wait_time = text_speed
-	
+	var _char = plain_text[content.visible_characters - 1]
+	if '.!?。！？:;：；'.contains(_char):
+		timer.wait_time *= 4
+	elif '，, '.contains(_char):
+		timer.wait_time *= 2
 	timer.start()
 	pass
 
