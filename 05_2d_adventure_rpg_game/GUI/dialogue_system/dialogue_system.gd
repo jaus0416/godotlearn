@@ -99,6 +99,7 @@ func set_dialogue_text(_d : DialogueText) -> void:
 	name_label.text = _d.npc_info.npc_name
 	portrait_sprite.texture = _d.npc_info.portrait
 	portrait_sprite.audio_pitch_base = _d.npc_info.dialogue_audio_pitch
+	choice_options.visible = false
 	
 	#字体动画效果
 	content.visible_characters = 0
@@ -120,6 +121,8 @@ func set_dialogue_choice(_d : DialogueChoice) -> void:
 		_new_choice.pressed.connect(_dialogue_choice_selected.bind(_d.dialog_branches[i]))
 		choice_options.add_child(_new_choice)
 	
+	if Engine.is_editor_hint():
+		return
 	await get_tree().process_frame
 	choice_options.get_child(0).grab_focus()
 	pass

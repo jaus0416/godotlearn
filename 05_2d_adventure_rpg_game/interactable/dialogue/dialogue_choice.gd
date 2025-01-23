@@ -6,11 +6,27 @@ class_name DialogueChoice
 var dialog_branches : Array[DialogueBranch]
 
 func _ready() -> void:
-	if Engine.is_editor_hint():
-		return
+	super()
 	for c in get_children():
 		if c is DialogueBranch:
 			dialog_branches.append(c)
+	pass
+
+func _set_editor_display() -> void:
+	if dialog_branches.size() < 2:
+		return
+	example_dialogue.set_dialogue_choice(self)
+	
+	set_related_edit()
+	pass
+	
+func set_related_edit() -> void:
+	var _p = get_parent()
+	var _i = self.get_index()
+	var _t = _p.get_child(_i - 1)
+	if _t != null and _t is DialogueText:
+		example_dialogue.set_dialogue_text(_t)
+		example_dialogue.content.visible_characters = -1
 	pass
 
 # 给出编辑器提示

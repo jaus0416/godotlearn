@@ -58,6 +58,7 @@ npc_resource = ExtResource("7_jphsw")
 script = ExtResource("10_e00yk")
 text = "hi, [b]小虾米[/b]
 很高兴见到你，我的名字叫啊蓝，而且我只会重复这一段话。"
+npc_info = ExtResource("7_jphsw")
 
 [node name="DialogueText2" type="Node" parent="NPC/DialogueInteraction"]
 script = ExtResource("10_e00yk")
@@ -67,7 +68,8 @@ npc_info = ExtResource("11_fxjak")
 
 [node name="DialogueText3" type="Node" parent="NPC/DialogueInteraction"]
 script = ExtResource("10_e00yk")
-text = "很[wave]高兴[/wave]见到你，[b][color=orange]再见！！[/color][/b]"
+text = "很[wave]高兴[/wave]见到你，[b][color=orange]再见！！[/color][/b]拜拜"
+npc_info = ExtResource("7_jphsw")
 
 [node name="NPC2" parent="." instance=ExtResource("6_akvgi")]
 position = Vector2(344, 212)
@@ -91,26 +93,33 @@ position = Vector2(100, -48)
 [node name="DialogueText" type="Node" parent="NPC2/DialogueInteraction"]
 script = ExtResource("10_e00yk")
 text = "hi， 你好啊，可以帮我去地牢中找到宝物吗？"
+npc_info = ExtResource("9_k0sjl")
 
 [node name="DialogueChoice" type="Node" parent="NPC2/DialogueInteraction"]
 script = ExtResource("15_2mjom")
+npc_info = ExtResource("9_k0sjl")
 
 [node name="DialogueBranch" type="Node" parent="NPC2/DialogueInteraction/DialogueChoice"]
 script = ExtResource("16_w5sj2")
 text = "好，没问题"
+npc_info = ExtResource("9_k0sjl")
 
 [node name="DialogueText" type="Node" parent="NPC2/DialogueInteraction/DialogueChoice/DialogueBranch"]
 script = ExtResource("10_e00yk")
 text = "谢谢你英雄"
+npc_info = ExtResource("9_k0sjl")
 
 [node name="DialogueText2" type="Node" parent="NPC2/DialogueInteraction/DialogueChoice/DialogueBranch"]
 script = ExtResource("10_e00yk")
 text = "进入地下城的时候要小心！！"
+npc_info = ExtResource("9_k0sjl")
 
 [node name="DialogueBranch2" type="Node" parent="NPC2/DialogueInteraction/DialogueChoice"]
 script = ExtResource("16_w5sj2")
 text = "不行"
+npc_info = ExtResource("9_k0sjl")
 
 [node name="DialogueText" type="Node" parent="NPC2/DialogueInteraction/DialogueChoice/DialogueBranch2"]
 script = ExtResource("10_e00yk")
 text = "哦不！"
+npc_info = ExtResource("9_k0sjl")
