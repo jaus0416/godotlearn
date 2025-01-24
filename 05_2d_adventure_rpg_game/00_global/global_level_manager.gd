@@ -21,9 +21,9 @@ func change_tilemap_bounds(bounds : Array[Vector2]) -> void:
 	
 # 地图切换
 func load_new_level(
-	level_path : String, 
-	_target_transition : String,
-	_position_offset : Vector2
+	level_path : String, # 场景文件路径
+	_target_transition : String, # 跳转触发器名称
+	_position_offset : Vector2 # 相对位置
 ) -> void:
 	#print("load new level: path: " + level_path + ", _target_transition: " + _target_transition + ", position: " + str(_position_offset))
 	get_tree().paused = true

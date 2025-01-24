@@ -17,7 +17,7 @@ offset_left = 171.0
 offset_top = 60.0
 offset_right = 224.0
 offset_bottom = 78.0
-text = "test_01"
+text = "test_02"
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0

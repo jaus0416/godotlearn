@@ -12,8 +12,9 @@ config_version=5
 
 config/name="GodotLearn"
 config/tags=PackedStringArray("2d", "aarpg")
-run/main_scene="res://05_2d_adventure_rpg_game/levels/area_01/area_01.tscn"
+run/main_scene="res://05_2d_adventure_rpg_game/titlescreen/title_scene.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
+boot_splash/show_image=false
 config/icon="res://icon.svg"
 
 [autoload]

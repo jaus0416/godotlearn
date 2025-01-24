@@ -7,7 +7,7 @@ func _ready() -> void:
 	print("$RichTextLabel.text: post: " + str($RichTextLabel.text))
 	pass
 
-# 工具方法
+# 工具方法，自动翻译rich_text
 func handle_rich_text(rich_text : String) -> String:
 	var translated_text = ""
 	var current_index = 0
