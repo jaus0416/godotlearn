@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://bj1iay3pfxs47"]
+
+[ext_resource type="Script" path="res://06_localization/scene/main.gd" id="1_gvs2g"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gvs2g")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 171.0
+offset_top = 60.0
+offset_right = 224.0
+offset_bottom = 78.0
+text = "test_01"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 171.0
+offset_top = 102.0
+offset_right = 231.0
+offset_bottom = 128.0
+text = "test_01"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 164.0
+offset_top = 165.0
+offset_right = 323.0
+offset_bottom = 205.0
+bbcode_enabled = true
+text = "[b]test_01[/b]"
